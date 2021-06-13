@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+package prjframework.sunaynatalreja.framework.config;
+
+import java.lang.reflect.Method;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+import prj.sunaynatalreja.logutil.Log;
+
+/**
+ * @author Sunayna Talreja
+*/
+public class BaseClass  {
+	
+	@BeforeMethod
+	public void beforeMethod(Method method)
+	{
+		Log.messageInfo(method.getName());
+	}
+	
+	
+
+}

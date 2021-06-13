@@ -1,0 +1,45 @@
+/**
+ * 
+ */
+package prjframework.sunaynatalreja.framework.testscript.stepdefinition;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import prjframework.sunaynatalreja.framework.testscript.webui.MyStoreAutomation;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+/**
+ * @author Sunayna Talreja
+ */
+
+
+public class MyStoreStepDefinition {
+
+	MyStoreAutomation myStore=new MyStoreAutomation();
+
+	@Given("^user is already on Home Page of \"(.*)\" on \"(.*)\"$")
+	public void user_already_on_home_page(String url, String browser) throws IOException{
+		myStore.init(url,browser);
+	}
+
+
+	@When("^user buys product of a given \"(.*)\"$")
+	public void user_buys_product_of_a_given(String price)
+	{
+
+		myStore.myStore(price);
+	}
+
+	@Then("^Close the browser$")
+	public void close_the_browser()
+	{
+		myStore.exit();
+
+	}
+
+
+}
