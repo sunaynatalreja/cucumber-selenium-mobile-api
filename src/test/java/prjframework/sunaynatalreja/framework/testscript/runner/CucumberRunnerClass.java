@@ -5,6 +5,7 @@ package prjframework.sunaynatalreja.framework.testscript.runner;
 
 /**
  * @author Sunayna Talreja
+ * Cucumber Runner class
 */
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,7 +21,7 @@ import cucumber.api.testng.TestNGCucumberRunner;
 
 @SuppressWarnings("deprecation")
 @CucumberOptions(
-        features = "src/main/resources/feature",
+        features = "src/test/resources/feature",
         glue = {"prjframework.sunaynatalreja.framework.testscript"},
         format = {
                 "pretty",

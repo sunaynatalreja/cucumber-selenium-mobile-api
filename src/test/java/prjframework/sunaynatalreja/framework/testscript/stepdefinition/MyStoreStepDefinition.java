@@ -14,6 +14,7 @@ import cucumber.api.java.en.When;
 
 /**
  * @author Sunayna Talreja
+ * MyStoreAutomation step definition
  */
 
 

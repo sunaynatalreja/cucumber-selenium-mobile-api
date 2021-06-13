@@ -9,9 +9,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import prj.sunaynatalreja.logutil.Log;
+import prjframework.sunaynatalreja.framework.cache.Cache;
 
 /**
  * @author Sunayna Talreja
+ * Base Class
 */
 public class BaseClass  {
 	
@@ -19,6 +21,7 @@ public class BaseClass  {
 	public void beforeMethod(Method method)
 	{
 		Log.messageInfo(method.getName());
+		
 	}
 	
 	

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" verbose="2" parallel="methods">
+  <test thread-count="5" name="APITest">
+  <parameter name="baseUrl" value="https://reqres.in/" />
+  <parameter name="workbook" value="TestData.xlsx" />
+  <parameter name="sheet" value="RegisterSuccessful" />
+  <parameter name="sheetCreate" value="Create" />
+  <parameter name="sheetSingleUser" value="SingleUser" />
+  <parameter name="sheetUpdateUser" value="UpdateUser" />
+  <parameter name="sheetDeleteUser" value="DeleteUser" />
+ <!-- <parameter name="browser" value="chrome" />
+  <parameter name="url" value="http://automationpractice.com/" />
+  <parameter name="productVal" value="27" /> -->
+  
+  <classes>  
+        <class name="prjframework.sunaynatalreja.framework.testscript.api.RegisterSuccessful"/> 
+     	<class name="prjframework.sunaynatalreja.framework.testscript.api.Create"/>  
+    	<class name="prjframework.sunaynatalreja.framework.testscript.api.SingleUserTestScript"/> 
+      	<class name="prjframework.sunaynatalreja.framework.testscript.api.ListUsersTestScript"/>
+     	<class name="prjframework.sunaynatalreja.framework.testscript.api.Update"/>
+     	<class name="prjframework.sunaynatalreja.framework.testscript.api.Delete"/>     	
+  </classes>
+  </test>
+</suite> <!-- Suite -->

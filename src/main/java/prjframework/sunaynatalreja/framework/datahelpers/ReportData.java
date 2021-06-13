@@ -5,6 +5,7 @@ package prjframework.sunaynatalreja.framework.datahelpers;
 
 /**
  * @author Sunayna Talreja
+ * Class to record test case run data
 */
 public class ReportData {
 	public String testName;

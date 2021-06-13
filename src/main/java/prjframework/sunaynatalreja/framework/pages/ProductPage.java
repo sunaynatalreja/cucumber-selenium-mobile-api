@@ -14,11 +14,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
-import prjframework.sunaynatalreja.framework.utils.ReadProperty;
+import prj.sunaynatalreja.readdatautil.ReadProperty;
 import prj.sunaynatalreja.webdriverutil.browserutil.BrowserElementActions;
+import prjframework.sunaynatalreja.framework.cache.Cache;
 
 /**
  * @author Sunayna Talreja
+ * Page class for product page 
+ * holding object repo and actions on the page 
  */
 public class ProductPage extends LoadableComponent<ProductPage> {
 
@@ -150,8 +153,9 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 	
 	public void signIn() throws Exception
 	{
-		BrowserElementActions.typeOnElement(driver, email, ReadProperty.getProperty("email"), "Email");
-		BrowserElementActions.typeOnElement(driver, password, ReadProperty.getProperty("password"), "Password");
+		String propertyfile=Cache.getInstance().getVal("propertyfile");
+		BrowserElementActions.typeOnElement(driver, email, ReadProperty.getProperty("email",propertyfile), "Email");
+		BrowserElementActions.typeOnElement(driver, password, ReadProperty.getProperty("password",propertyfile), "Password");
 		BrowserElementActions.clickOnElement(driver, SubmitLogin, "Proceed To Checkout Button");
 	}
 

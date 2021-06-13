@@ -17,35 +17,48 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<poi-ooxml.version>4.1.2</poi-ooxml.version>
+		<testng.version>7.3.0</testng.version>
+		<selenium-java.version>3.141.59</selenium-java.version>
+		<cucumber-java.version>1.2.6</cucumber-java.version>
+		<cucumber-jvm-deps.version>1.0.5</cucumber-jvm-deps.version>
+		<frameworkutil.version>0.0.2-SNAPSHOT</frameworkutil.version>
+		<cucumber-testng.version>1.2.5</cucumber-testng.version>
+		<jackson-databind.version>2.12.0</jackson-databind.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi-ooxml.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>7.3.0</version>
+			<version>${testng.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>3.141.59</version>
+			<version>${selenium-java.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>1.2.6</version>
+			<version>${cucumber-java.version}</version>
 			<!-- <scope>test</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-jvm-deps</artifactId>
-			<version>1.0.5</version>
+			<version>${cucumber-jvm-deps.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-testng</artifactId>
-			<version>1.2.5</version>
+			<version>${cucumber-testng.version}</version>
 			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
@@ -57,17 +70,12 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.12.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.jayway.restassured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<version>2.9.0</version>
+			<version>${jackson-databind.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>prj.sunaynatalreja.frameworkutil</groupId>
 			<artifactId>frameworkutil</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${frameworkutil.version}</version>
 		</dependency>
 	</dependencies>
 

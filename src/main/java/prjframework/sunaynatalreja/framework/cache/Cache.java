@@ -14,6 +14,7 @@ import com.google.common.graph.Graph;
 
 /**
  * @author Sunayna Talreja
+ * Singleton Cache instance to hold test run data
 */
 public class Cache {
 	

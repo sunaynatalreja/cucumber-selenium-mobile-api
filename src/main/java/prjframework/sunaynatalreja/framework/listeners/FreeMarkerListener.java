@@ -18,6 +18,7 @@ import prj.sunaynatalreja.freemarkerreport.FreeMarkerReportUtil;
 
 /**
  * @author Sunayna Talreja
+ * Freemarker listner to create test run report
  */
 public class FreeMarkerListener implements ITestListener {
 

@@ -45,7 +45,13 @@ public class MyStoreAutomation extends BaseClass{
 	{
 		website=url;
 		browser=browserName;
+		driver=WebDriverFactory.get(browser, "http://localhost:4444/wd/hub", "", "");
+		productPage=new ProductPage(website, driver).get();
+		Cache.getInstance().putVal("propertyfile", "config.properties");
+		Log.messageInfo("Navigated to Home Page!");
+		
 	}
+	
 	@Parameters("productVal")
 	@Test
 	public void myStore(String price)
@@ -53,10 +59,6 @@ public class MyStoreAutomation extends BaseClass{
 		SoftAssert softAssert =new SoftAssert();
 		Cache cache=Cache.getInstance();
 		try {
-			driver=WebDriverFactory.get(browser, "http://localhost:4444/wd/hub", "", "");
-			productPage=new ProductPage(website, driver).get();
-	
-			Log.messageInfo("Navigated to Home Page!");
 			
 			productPage.clickWomenCategories();
 			Log.messageInfo("Navigated to Women category");

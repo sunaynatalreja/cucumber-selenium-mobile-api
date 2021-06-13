@@ -18,11 +18,11 @@ import org.testng.ITestResult;
 
 import prj.sunaynatalreja.extentreportutil.ExtentReportUtil;
 import prjframework.sunaynatalreja.framework.cache.Cache;
-import prjframework.sunaynatalreja.framework.utils.ReadProperty;
 
 
 /**
  * @author Sunayna Talreja
+ * Extent report listner to create test run report
 */
 
 public class ExtentReportListener implements ITestListener {
