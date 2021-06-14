@@ -42,7 +42,7 @@ public class APIRequests {
 		request.setEmail(data.get("Email"));
 		request.setPassword(data.get("Password"));
 		ObjectMapper mapper=new ObjectMapper();		
-		String response=JSONUtil.jsonPost(mapper.writeValueAsString(request),url);
+		String response=JSONUtil.getInstance().jsonPost(mapper.writeValueAsString(request),url);
 		return mapper.readValue(response, RegisterSuccessfulResponse.class);
 		
 	}
@@ -61,7 +61,7 @@ public class APIRequests {
 		request.setName(data.get("Name"));
 		request.setJob(data.get("Job"));
 		ObjectMapper mapper=new ObjectMapper();		
-		String response=JSONUtil.jsonPost(mapper.writeValueAsString(request),url);
+		String response=JSONUtil.getInstance().jsonPost(mapper.writeValueAsString(request),url);
 		return mapper.readValue(response, CreateResponse.class);
 		
 	}
@@ -76,7 +76,7 @@ public class APIRequests {
 	public static SingleUser getSingleUserResponse(Map<String, String> data) throws JsonMappingException, JsonProcessingException {
 		String url=APIURL.getSingleUserGet();
 		ObjectMapper mapper=new ObjectMapper();		
-		String response=JSONUtil.jsonGetPathParameter(url,data);
+		String response=JSONUtil.getInstance().jsonGetPathParameter(url,data);
 		return mapper.readValue(response, SingleUser.class);
 	}	
 	/**
@@ -92,13 +92,13 @@ public class APIRequests {
 		ObjectMapper mapper=new ObjectMapper();	
 		Map<String,String> map=new HashedMap<>();
 		map.put("page", "1");
-		Response response=JSONUtil.jsonGetQueryParams(map,url);
+		Response response=JSONUtil.getInstance().jsonGetQueryParams(map,url);
 		listUsers.add(mapper.readValue(response.body().asString(), ListUsers.class));
 		int totalPages=Integer.parseInt(listUsers.get(0).getTotal_pages());
 		for(int i=2;i<=totalPages;i++)
 		{
 			map.put("page",String.valueOf(i));
-			Response response2=JSONUtil.jsonGetQueryParams(map,url);
+			Response response2=JSONUtil.getInstance().jsonGetQueryParams(map,url);
 			listUsers.add(mapper.readValue(response2.body().asString(), ListUsers.class));
 		}
 		return listUsers;
@@ -117,7 +117,7 @@ public class APIRequests {
 		request.setName(data.get("Name"));
 		request.setJob(data.get("Job"));
 		ObjectMapper mapper=new ObjectMapper();		
-		String response=JSONUtil.jsonPut(mapper.writeValueAsString(request),url);
+		String response=JSONUtil.getInstance().jsonPut(mapper.writeValueAsString(request),url);
 		return mapper.readValue(response, UpdateUser.class);
 	}
 
@@ -136,7 +136,7 @@ public class APIRequests {
 		
 		String url=APIURL.getDelete();
 		ObjectMapper mapper=new ObjectMapper();		
-		Response response=JSONUtil.jsonDeleteWithPathParams(data,url);
+		Response response=JSONUtil.getInstance().jsonDeleteWithPathParams(data,url);
 		return response;
 	}
 }

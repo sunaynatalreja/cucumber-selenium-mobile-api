@@ -31,14 +31,14 @@ String testInstanceName;
 
 public void onTestStart(ITestResult iTestResult) {
     testInstanceName=iTestResult.getName();
-    ExtentReportUtil.reportExtentTestStart(testInstanceName);
+    ExtentReportUtil.getInstance().reportExtentTestStart(testInstanceName);
 
 }
 
 public void onTestSuccess(ITestResult iTestResult) {
         iTestResult.setAttribute("TestData",iTestResult.getTestContext().getAttribute("TestData"));
         String testData=Cache.getInstance().getVal(testInstanceName);
-        ExtentReportUtil.setReportExtentTestDetails("PASS",testData,testInstanceName);
+        ExtentReportUtil.getInstance().setReportExtentTestDetails("PASS",testData,testInstanceName);
 
 
       }
@@ -46,13 +46,13 @@ public void onTestSuccess(ITestResult iTestResult) {
 public void onTestFailure(ITestResult iTestResult) {
     iTestResult.setAttribute("TestData",iTestResult.getTestContext().getAttribute("TestData"));
     String testData=Cache.getInstance().getVal(testInstanceName);
-    ExtentReportUtil.setReportExtentTestDetails("FAIL",testData,testInstanceName);
+    ExtentReportUtil.getInstance().setReportExtentTestDetails("FAIL",testData,testInstanceName);
 }
 
 public void onTestSkipped(ITestResult iTestResult) {
     iTestResult.setAttribute("TestData",iTestResult.getTestContext().getAttribute("TestData"));
     String testData=Cache.getInstance().getVal(testInstanceName);
-    ExtentReportUtil.setReportExtentTestDetails("SKIP",testData,testInstanceName);
+    ExtentReportUtil.getInstance().setReportExtentTestDetails("SKIP",testData,testInstanceName);
 }
 
 public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
@@ -62,12 +62,12 @@ public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
 public void onStart(ITestContext iTestContext) {
     
 	String path=System.getProperty("user.dir") +"/test-output/ExtentReport.html";
-	ExtentReportUtil.createReport(path,"Automation Report", "Framework Automation");
+	ExtentReportUtil.getInstance().createReport(path,"Automation Report", "Framework Automation");
 
 }
 
 public void onFinish(ITestContext iTestContext)
 {
-    ExtentReportUtil.reportExtentEnd();
+    ExtentReportUtil.getInstance().reportExtentEnd();
 }
 }

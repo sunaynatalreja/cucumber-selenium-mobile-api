@@ -45,7 +45,8 @@ public class MyStoreAutomation extends BaseClass{
 	{
 		website=url;
 		browser=browserName;
-		driver=WebDriverFactory.get(browser, "http://localhost:4444/wd/hub", "", "");
+		WebDriverFactory factory=new WebDriverFactory();
+		driver=factory.get(browser, "http://localhost:4444/wd/hub", "", "");
 		productPage=new ProductPage(website, driver).get();
 		Cache.getInstance().putVal("propertyfile", "config.properties");
 		Log.messageInfo("Navigated to Home Page!");

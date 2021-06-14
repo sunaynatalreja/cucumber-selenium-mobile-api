@@ -76,7 +76,7 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 	protected void load() {
 		isPageLoaded = true;
 		driver.get(url);
-		BrowserElementActions.waitForPageLoad(driver);
+		BrowserElementActions.getInstance().waitForPageLoad(driver);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 		if (!isPageLoaded) {
 			Assert.fail();
 		}
-		if (isPageLoaded && !(BrowserElementActions.waitForElement(driver, womenCategories))) {
+		if (isPageLoaded && !(BrowserElementActions.getInstance().waitForElement(driver, womenCategories))) {
 			System.out.println("Home Page did not open up. Site might be down.");
 		}
 		System.out.println("The current URL is: " + driver.getCurrentUrl());
@@ -95,22 +95,22 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 
 	public void clickWomenCategories() throws Exception
 	{
-		BrowserElementActions.clickOnElement(driver, womenCategories, "Women Category Navigation");
+		BrowserElementActions.getInstance().clickOnElement(driver, womenCategories, "Women Category Navigation");
 	}
 
 	public void addFilters() throws Exception
 	{
-		BrowserElementActions.waitForElement(driver, filters.get(0));
+		BrowserElementActions.getInstance().waitForElement(driver, filters.get(0));
 		int filterClicked=0;
 		while(filterClicked<3)
 		{
 			int rndNum=randomNumber();
 			WebElement wb=filters.get(rndNum).findElement(By.tagName("li"));
 			
-			BrowserElementActions.clickOnElement(driver, wb, "Women Category Navigation");
+			BrowserElementActions.getInstance().clickOnElement(driver, wb, "Women Category Navigation");
 			++filterClicked;
 		}
-		BrowserElementActions.clickOnElement(driver, womenCategories, "Women Category Navigation");
+		BrowserElementActions.getInstance().clickOnElement(driver, womenCategories, "Women Category Navigation");
 	}
 
 	public static int randomNumber()
@@ -131,13 +131,13 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 			
 			if(wb.getText().contains(price))
 			{
-				BrowserElementActions.mouseHoverAction(wb, driver, "Moved to required Product");
+				BrowserElementActions.getInstance().mouseHoverAction(wb, driver, "Moved to required Product");
 				//WebElement addToCartElement=products.get(count).
 				WebElement addToCart=products.get(count).findElement(By.xpath(".//following-sibling::div/a"));
-				BrowserElementActions.clickOnElement(driver, addToCart, "Add to Cart clicked");
+				BrowserElementActions.getInstance().clickOnElement(driver, addToCart, "Add to Cart clicked");
 				found=true;
-				BrowserElementActions.clickOnElement(driver, proceedToCheckout, "Proceed To Checkout Button");
-				BrowserElementActions.waitForElement(driver, proceedToCheckoutPage);
+				BrowserElementActions.getInstance().clickOnElement(driver, proceedToCheckout, "Proceed To Checkout Button");
+				BrowserElementActions.getInstance().waitForElement(driver, proceedToCheckoutPage);
 			}
 			++count;
 				
@@ -148,15 +148,15 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 	
 	public void proceedToCheckout() throws Exception
 	{
-		BrowserElementActions.clickOnElement(driver, proceedToCheckoutPage, "Proceed To Checkout Button");
+		BrowserElementActions.getInstance().clickOnElement(driver, proceedToCheckoutPage, "Proceed To Checkout Button");
 	}
 	
 	public void signIn() throws Exception
 	{
 		String propertyfile=Cache.getInstance().getVal("propertyfile");
-		BrowserElementActions.typeOnElement(driver, email, ReadProperty.getProperty("email",propertyfile), "Email");
-		BrowserElementActions.typeOnElement(driver, password, ReadProperty.getProperty("password",propertyfile), "Password");
-		BrowserElementActions.clickOnElement(driver, SubmitLogin, "Proceed To Checkout Button");
+		BrowserElementActions.getInstance().typeOnElement(driver, email, ReadProperty.getInstance().getProperty("email",propertyfile), "Email");
+		BrowserElementActions.getInstance().typeOnElement(driver, password, ReadProperty.getInstance().getProperty("password",propertyfile), "Password");
+		BrowserElementActions.getInstance().clickOnElement(driver, SubmitLogin, "Proceed To Checkout Button");
 	}
 
 	/**
@@ -164,18 +164,18 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 	 * 
 	 */
 	public void agreeTerms() throws Exception {
-		BrowserElementActions.clickOnElement(driver, terms, "Proceed To Checkout Button");
+		BrowserElementActions.getInstance().clickOnElement(driver, terms, "Proceed To Checkout Button");
 				
 	}
 	
 	public void clickBankwire() throws Exception {
-		BrowserElementActions.clickOnElement(driver, bankwire, "Bankwire Payment option");
-		BrowserElementActions.waitForPageLoad(driver);		
+		BrowserElementActions.getInstance().clickOnElement(driver, bankwire, "Bankwire Payment option");
+		BrowserElementActions.getInstance().waitForPageLoad(driver);		
 	}
 	
 	public void clickConfirmOrder() throws Exception {
-		BrowserElementActions.clickOnElement(driver, confirmOrder, "Bankwire Payment option");
-		BrowserElementActions.waitForPageLoad(driver);		
+		BrowserElementActions.getInstance().clickOnElement(driver, confirmOrder, "Bankwire Payment option");
+		BrowserElementActions.getInstance().waitForPageLoad(driver);		
 	}
 	
 	public String getOrderDetails() throws Exception {

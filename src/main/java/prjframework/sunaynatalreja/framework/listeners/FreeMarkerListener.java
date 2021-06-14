@@ -79,7 +79,7 @@ public class FreeMarkerListener implements ITestListener {
 	@Override
 	public void onFinish(ITestContext context) {
 		try {
-			FreeMarkerReportUtil.HTMLReport(reportData, "report.ftl","test-output/freemarkerreport.html");
+			FreeMarkerReportUtil.getInstance().HTMLReport(reportData, "report.ftl","test-output/freemarkerreport.html");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
