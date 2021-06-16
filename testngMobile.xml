@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" verbose="2">
+<!--  <listeners>
+ <listener class-name="com.fasal.listners.MyListener"/>
+ </listeners> -->
+  <test thread-count="5" name="APITest">
+  <parameter name="browser" value="android" />
+  <classes>  
+     	<class name="prjframework.sunaynatalreja.framework.testscripts.mobile.MobileTestAutomation"/>
+  </classes>
+  </test>
+</suite> <!-- Suite -->
