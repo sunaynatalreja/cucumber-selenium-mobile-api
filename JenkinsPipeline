@@ -18,7 +18,8 @@ pipeline {
         }
             stage('Build') {
             steps {
-                    sh "pwd"
+            		withMaven(mavenSettingsConfig: 'c7a7109c-b001-4917-97e7-041b6167b03f') {
+            		sh "pwd"
                     sh 'mvn -B -DskipTests clean package'
                     sh 'docker ps -a'
                    
