@@ -96,7 +96,7 @@ public class MyStoreAutomation extends BaseClass{
 		}
 		catch(Exception e)
 		{
-			softAssert.assertTrue(false);
+			softAssert.fail();
 			cache.getInstance().putVal("myStore", "Error: "+e.getStackTrace().toString());
 			Log.messageError(e.getStackTrace().toString());
 			e.printStackTrace();

@@ -49,7 +49,7 @@ public class Create extends BaseClass{
 			
 			
 		} catch (Exception e) {
-			softAssert.assertTrue(false);
+			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
 			Log.messageError(e.getStackTrace().toString());
 			e.printStackTrace();

@@ -42,7 +42,7 @@ public class Delete {
 			softAssert.assertTrue(response.statusCode()>=200 && response.statusCode()<=299);
 			
 		} catch (Exception e) {
-			softAssert.assertTrue(false);
+			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
 			Log.messageError(e.getStackTrace().toString());
 			e.printStackTrace();

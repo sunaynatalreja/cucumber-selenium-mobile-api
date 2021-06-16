@@ -47,7 +47,7 @@ public class Update {
 			softAssert.assertTrue(response.updatedAt.length()>0);
 			
 		} catch (Exception e) {
-			softAssert.assertTrue(false);
+			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
 			Log.messageError(e.getStackTrace().toString());
 			e.printStackTrace();

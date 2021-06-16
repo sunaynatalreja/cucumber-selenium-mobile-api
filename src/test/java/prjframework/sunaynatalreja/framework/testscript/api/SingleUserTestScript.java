@@ -50,7 +50,7 @@ public class SingleUserTestScript {
 			softAssert.assertTrue(response.data.id.length()!=0);
 			
 		} catch (Exception e) {
-			softAssert.assertTrue(false);
+			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
 			Log.messageError(e.getStackTrace().toString());
 			e.printStackTrace();
