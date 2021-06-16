@@ -1,0 +1,60 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Code Pull') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[credentialsId: '6d3a364d-78a9-427f-b80e-02bbf418cfbe',url: 'https://github.com/sunaynatalreja/cucumber-selenium-mobile-api.git']]])
+            
+            }
+        }
+        stage('Docker container spinup') {
+            steps {
+                dir("FasalAssignment") {
+                    sh "pwd"
+                    sh 'docker-compose up -d'
+                }   
+            
+            }
+        }
+            stage('Build') {
+            steps {
+                dir("FasalAssignment") {
+                    sh "pwd"
+                    sh 'mvn -B -DskipTests clean package'
+                    sh 'docker ps -a'
+                }   
+                
+            }
+            }
+            
+            stage('test') {
+            steps {
+                dir("FasalAssignment") {
+                    sh "pwd"
+                sh 'mvn test'
+                }
+            }
+            }
+            
+            stage('sonar test') {
+            steps {
+                dir("FasalAssignment") {
+                    sh "pwd"
+                sh 'mvn clean package sonar:sonar'
+                }
+            }
+            }
+            
+            stage('Docker container close') {
+            steps {
+                dir("FasalAssignment") {
+                    sh "pwd"
+                    sh 'docker stop $(docker ps -a -q)'
+                    sh 'docker rm $(docker ps -a -q)'
+                }   
+            
+            }
+        }
+        }
+    }

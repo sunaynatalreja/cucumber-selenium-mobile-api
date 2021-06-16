@@ -1,0 +1,30 @@
+version: "3"
+services:
+
+ hub:
+  image: selenium/hub
+  volumes:
+   - ./web/application:/application
+  ports:
+   - "4444:4444"
+      
+ chrome:
+  image: selenium/node-chrome-debug:latest
+  container_name: web-automation_chrome
+  environment:
+   - HUB_PORT_4444_TCP_ADDR=hub
+   - HUB_PORT_4444_TCP_PORT=4444
+  ports:
+   - 5900:5900
+  depends_on:
+   - hub
+
+ firefox:
+  image: selenium/node-firefox-debug:latest
+  environment:
+   - HUB_PORT_4444_TCP_ADDR=hub
+   - HUB_PORT_4444_TCP_PORT=4444
+  ports:
+   - 5901:5900
+  depends_on:
+   - hub

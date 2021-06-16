@@ -132,7 +132,7 @@
 					<configuration>
 						<!-- Suite testng xml file to consider for test execution -->
 						<suiteXmlFiles>
-							<suiteXmlFile>./testngWeb.xml</suiteXmlFile>
+							<suiteXmlFile>${testng.name}</suiteXmlFile>
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>
