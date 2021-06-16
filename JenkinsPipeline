@@ -18,12 +18,11 @@ pipeline {
         }
             stage('Build') {
             steps {
-            	configFileProvider([configFile(fileId: 'c7a7109c-b001-4917-97e7-041b6167b03f', variable: 'MAVEN_SETTINGS')]) {
-            			sh "pwd"
-                    	sh 'mvn -B -DskipTests -s $MAVEN_SETTINGS clean package'
-                    	sh 'docker ps -a'
-                    }
-                   
+            		configFileProvider([configFile(fileId: 'c7a7109c-b001-4917-97e7-041b6167b03f', variable: 'MAVEN_SETTINGS')]){
+                    sh "pwd"
+                    sh 'mvn -B -DskipTests -s $MAVEN_SETTINGS clean package'
+                    sh 'docker ps -a'
+                   }
                 
             }
             }
@@ -31,7 +30,7 @@ pipeline {
             stage('test') {
             steps {                
                 sh "pwd"
-                sh 'mvn test -D${TestNGXML}'
+                sh 'mvn test -Dtestng.name=${TestNGXML}'
                 
             }
             }
