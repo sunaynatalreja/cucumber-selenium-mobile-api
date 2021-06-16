@@ -10,50 +10,37 @@ pipeline {
         }
         stage('Docker container spinup') {
             steps {
-                dir("FasalAssignment") {
                     sh "pwd"
                     sh 'docker-compose up -d'
-                }   
+                  
             
             }
         }
             stage('Build') {
             steps {
-                dir("FasalAssignment") {
                     sh "pwd"
                     sh 'mvn -B -DskipTests clean package'
                     sh 'docker ps -a'
-                }   
+                   
                 
             }
             }
             
             stage('test') {
-            steps {
-                dir("FasalAssignment") {
-                    sh "pwd"
-                sh 'mvn test'
-                }
+            steps {                
+                sh "pwd"
+                sh 'mvn test -D${TestNGXML}'
+                
             }
             }
             
-            stage('sonar test') {
-            steps {
-                dir("FasalAssignment") {
-                    sh "pwd"
-                sh 'mvn clean package sonar:sonar'
-                }
-            }
-            }
-            
+                       
             stage('Docker container close') {
             steps {
-                dir("FasalAssignment") {
                     sh "pwd"
                     sh 'docker stop $(docker ps -a -q)'
                     sh 'docker rm $(docker ps -a -q)'
-                }   
-            
+                            
             }
         }
         }
