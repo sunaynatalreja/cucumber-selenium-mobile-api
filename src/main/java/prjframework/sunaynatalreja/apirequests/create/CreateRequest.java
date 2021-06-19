@@ -9,8 +9,8 @@ package prjframework.sunaynatalreja.apirequests.create;
 */
 public class CreateRequest {
 
-	public String name;
-	public String job;
+	private String name;
+	private String job;
 	public String getName() {
 		return name;
 	}

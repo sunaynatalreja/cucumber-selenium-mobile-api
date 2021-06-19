@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 import prjframework.sunaynatalreja.apirequests.APIRequests;
 import prjframework.sunaynatalreja.dataprovider.DataProviderClass;
 import prjframework.sunaynatalreja.framework.cache.Cache;
+import prjframework.sunaynatalreja.framework.listeners.ExtentReportListener;
 import prj.sunaynatalreja.logutil.Log;
 import com.jayway.restassured.response.Response;
 
@@ -22,8 +23,10 @@ import com.jayway.restassured.response.Response;
  * Test class for Delete api test cases
 */
 
+@Listeners(ExtentReportListener.class)
 public class Delete {
 
+	@SuppressWarnings("static-access")
 	@BeforeClass
 	public void init()
 	{
@@ -33,22 +36,22 @@ public class Delete {
 	@Test(dataProvider = "deleteUser" , dataProviderClass = DataProviderClass.class)
 	public void registerSuccessTest(Map<String,String> data,ITestContext context)
 	{
-		Log.messageInfo("Running Delete");
-		Log.messageInfo("TestData : "+data.toString());
+		Log.setMessageInfo("Running Delete");
+		Log.setMessageInfo("TestData : "+data.toString());
 		SoftAssert softAssert = new SoftAssert(); 
 		context.setAttribute("Data", data.toString());
 		try {
-			Response response=APIRequests.getDeleteResponse(data);
+			Response response=APIRequests.getInstance().getDeleteResponse(data);
 			softAssert.assertTrue(response.statusCode()>=200 && response.statusCode()<=299);
 			
 		} catch (Exception e) {
 			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
-			Log.messageError(e.getStackTrace().toString());
+			Log.setMessageError(e.getStackTrace().toString());
 			e.printStackTrace();
 		}
 		softAssert.assertAll();
-		Log.messageInfo("Delete Completed");
+		Log.setMessageInfo("Delete Completed");
 		  
 	}
 }

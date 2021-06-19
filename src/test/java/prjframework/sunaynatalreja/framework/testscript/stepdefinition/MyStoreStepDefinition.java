@@ -4,8 +4,6 @@
 package prjframework.sunaynatalreja.framework.testscript.stepdefinition;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-
 import prjframework.sunaynatalreja.framework.testscript.webui.MyStoreAutomation;
 
 import cucumber.api.java.en.Given;

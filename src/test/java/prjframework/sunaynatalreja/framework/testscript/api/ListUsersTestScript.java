@@ -13,6 +13,7 @@ import org.testng.asserts.SoftAssert;
 import prjframework.sunaynatalreja.apirequests.APIRequests;
 import prjframework.sunaynatalreja.apiresponse.listusers.ListUsers;
 import prjframework.sunaynatalreja.framework.cache.Cache;
+import prjframework.sunaynatalreja.framework.listeners.ExtentReportListener;
 import prj.sunaynatalreja.logutil.Log;
 
 
@@ -21,8 +22,10 @@ import prj.sunaynatalreja.logutil.Log;
  * Test class for ListUsers api test cases
 */
 
+@Listeners(ExtentReportListener.class)
 public class ListUsersTestScript {
 	
+	@SuppressWarnings("static-access")
 	@BeforeClass
 	public void init()
 	{
@@ -32,21 +35,21 @@ public class ListUsersTestScript {
 	@Test
 	public void listUsers(ITestContext context)
 	{
-		Log.messageInfo("Running List Users Data");
+		Log.setMessageInfo("Running List Users Data");
 		SoftAssert softAssert = new SoftAssert(); 
 		context.setAttribute("Data", "");
 		try {
-			List<ListUsers> response=APIRequests.getListUsersResponse();
+			List<ListUsers> response=APIRequests.getInstance().getListUsersResponse();
 			softAssert.assertTrue(response.size()>0);
 			
 		} catch (Exception e) {
 			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
-			Log.messageError(e.getStackTrace().toString());
+			Log.setMessageError(e.getStackTrace().toString());
 			e.printStackTrace();
 		}
 		softAssert.assertAll();
-		Log.messageInfo("List User fetched successfully");  
+		Log.setMessageInfo("List User fetched successfully");  
 	}
 
 

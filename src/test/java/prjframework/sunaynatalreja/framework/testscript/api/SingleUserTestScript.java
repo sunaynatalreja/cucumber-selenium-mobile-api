@@ -15,6 +15,7 @@ import prjframework.sunaynatalreja.apirequests.APIRequests;
 import prjframework.sunaynatalreja.apiresponse.singleUser.SingleUser;
 import prjframework.sunaynatalreja.dataprovider.DataProviderClass;
 import prjframework.sunaynatalreja.framework.cache.Cache;
+import prjframework.sunaynatalreja.framework.listeners.ExtentReportListener;
 import prj.sunaynatalreja.logutil.Log;
 
 
@@ -22,9 +23,10 @@ import prj.sunaynatalreja.logutil.Log;
  * @author Sunayna Talreja
  * Test class for single user api test cases
 */
-
+@Listeners(ExtentReportListener.class)
 public class SingleUserTestScript {
 	
+	@SuppressWarnings("static-access")
 	@BeforeClass
 	public void init()
 	{
@@ -35,28 +37,28 @@ public class SingleUserTestScript {
 	@Test(dataProvider = "getSingleUserData" , dataProviderClass = DataProviderClass.class)
 	public void singleUser(Map<String,String> data,ITestContext context)
 	{
-		Log.messageInfo("Running Single User Data");
-		Log.messageInfo("TestData : "+data.toString());
+		Log.setMessageInfo("Running Single User Data");
+		Log.setMessageInfo("TestData : "+data.toString());
 		SoftAssert softAssert = new SoftAssert(); 
 		context.setAttribute("Data", data.toString());
 		try {
-			SingleUser response=APIRequests.getSingleUserResponse(data);
-			softAssert.assertTrue(response.support.text.length()!=0);
-			softAssert.assertTrue(response.support.url.length()!=0);
-			softAssert.assertTrue(response.data.avatar.length()!=0);
-			softAssert.assertTrue(response.data.email.length()!=0);
-			softAssert.assertTrue(response.data.first_name.length()!=0);
-			softAssert.assertTrue(response.data.last_name.length()!=0);
-			softAssert.assertTrue(response.data.id.length()!=0);
+			SingleUser response=APIRequests.getInstance().getSingleUserResponse(data);
+			softAssert.assertTrue(response.getSupport().getText().length()!=0);
+			softAssert.assertTrue(response.getSupport().getUrl().length()!=0);
+			softAssert.assertTrue(response.getData().getAvatar().length()!=0);
+			softAssert.assertTrue(response.getData().getEmail().length()!=0);
+			softAssert.assertTrue(response.getData().getFirst_name().length()!=0);
+			softAssert.assertTrue(response.getData().getLast_name().length()!=0);
+			softAssert.assertTrue(response.getData().getId().length()!=0);
 			
 		} catch (Exception e) {
 			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
-			Log.messageError(e.getStackTrace().toString());
+			Log.setMessageError(e.getStackTrace().toString());
 			e.printStackTrace();
 		}
 		softAssert.assertAll();
-		Log.messageInfo("Single User Fetch Completed");
+		Log.setMessageInfo("Single User Fetch Completed");
 		  
 	}
 

@@ -19,6 +19,7 @@ import prj.sunaynatalreja.webdriverutil.mobileutil.MobileElementActions;
 */
 public class MobileAutomationScript {
 	
+	@SuppressWarnings("unused")
 	private boolean isPageLoaded;
 	WebDriver driver=null;
 	

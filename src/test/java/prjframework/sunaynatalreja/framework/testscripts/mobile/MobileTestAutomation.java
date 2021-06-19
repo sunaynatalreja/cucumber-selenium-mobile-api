@@ -3,13 +3,11 @@
  */
 package prjframework.sunaynatalreja.framework.testscripts.mobile;
 
-import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -41,7 +39,7 @@ public class MobileTestAutomation {
 		String currentDirectory = System.getProperty("user.dir");
 		System.out.println(currentDirectory);
 
-		driver=webDriverFactory.get(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","Android Device",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
+		driver=webDriverFactory.getDriver(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","Android Device",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
 		mobileAutomationScript=new MobileAutomationScript(driver);
 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -58,7 +56,7 @@ public class MobileTestAutomation {
 	{
 		String currentDirectory = System.getProperty("user.dir");
 		System.out.println(currentDirectory);
-		driver=webDriverFactory.get(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","Android Device",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
+		driver=webDriverFactory.getDriver(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","Android Device",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
 		mobileAutomationScript=new MobileAutomationScript(driver);
 
 		mobileAutomationScript.clickViews();
@@ -73,7 +71,7 @@ public class MobileTestAutomation {
 		String currentDirectory = System.getProperty("user.dir");
 		System.out.println(currentDirectory);
 
-		driver=webDriverFactory.get(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","Android Device",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
+		driver=webDriverFactory.getDriver(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","Android Device",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
 		mobileAutomationScript=new MobileAutomationScript(driver);
 
 		mobileAutomationScript.clickViews();
@@ -89,7 +87,7 @@ public class MobileTestAutomation {
 		String currentDirectory = System.getProperty("user.dir");
 		System.out.println(currentDirectory);
 
-		driver=webDriverFactory.get(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","Android Device",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
+		driver=webDriverFactory.getDriver(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","Android Device",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
 		mobileAutomationScript=new MobileAutomationScript(driver);
 		mobileAutomationScript.clickViews();
 		mobileAutomationScript.scrollToList();

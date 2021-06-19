@@ -16,6 +16,7 @@ import prjframework.sunaynatalreja.apiresponse.create.CreateResponse;
 import prjframework.sunaynatalreja.dataprovider.DataProviderClass;
 import prjframework.sunaynatalreja.framework.cache.Cache;
 import prjframework.sunaynatalreja.framework.config.BaseClass;
+import prjframework.sunaynatalreja.framework.listeners.ExtentReportListener;
 import prj.sunaynatalreja.logutil.Log;
 
 /**
@@ -23,9 +24,11 @@ import prj.sunaynatalreja.logutil.Log;
  * Test class for create api test cases
 */
 
+@Listeners(ExtentReportListener.class)
 
 public class Create extends BaseClass{
 	
+	@SuppressWarnings("static-access")
 	@BeforeClass
 	public void init()
 	{
@@ -36,26 +39,26 @@ public class Create extends BaseClass{
 	@Test(dataProvider = "getCreateData" , dataProviderClass = DataProviderClass.class)
 	public void create(Map<String,String> data,ITestContext context)
 	{
-		Log.messageInfo("Running Test Create");
-		Log.messageInfo("TestData : "+data.toString());
+		Log.setMessageInfo("Running Test Create");
+		Log.setMessageInfo("TestData : "+data.toString());
 		SoftAssert softAssert = new SoftAssert(); 
 		context.setAttribute("Data", data.toString());
 		try {
-			CreateResponse response=APIRequests.getCreateResponse(data);
-			softAssert.assertTrue(response.id.length()!=0);
-			softAssert.assertTrue(response.name.length()!=0);
-			softAssert.assertTrue(response.job.length()!=0);
-			softAssert.assertTrue(response.createdAt.length()!=0);		
+			CreateResponse response=APIRequests.getInstance().getCreateResponse(data);
+			softAssert.assertTrue(response.getId().length()!=0);
+			softAssert.assertTrue(response.getName().length()!=0);
+			softAssert.assertTrue(response.getJob().length()!=0);
+			softAssert.assertTrue(response.getCreatedAt().length()!=0);		
 			
 			
 		} catch (Exception e) {
 			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
-			Log.messageError(e.getStackTrace().toString());
+			Log.setMessageError(e.getStackTrace().toString());
 			e.printStackTrace();
 		}
 		softAssert.assertAll();
-		Log.messageInfo("Create Completed");
+		Log.setMessageInfo("Create Completed");
 		  
 	}
 

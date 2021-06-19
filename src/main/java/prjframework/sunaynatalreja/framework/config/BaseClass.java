@@ -20,7 +20,7 @@ public class BaseClass  {
 	@BeforeMethod
 	public void beforeMethod(Method method)
 	{
-		Log.messageInfo(method.getName());
+		Log.setMessageInfo(method.getName());
 		
 	}
 	

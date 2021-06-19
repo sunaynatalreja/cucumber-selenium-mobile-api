@@ -10,7 +10,6 @@ package prjframework.sunaynatalreja.framework.testscript.runner;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import cucumber.api.CucumberOptions;
@@ -19,7 +18,6 @@ import cucumber.api.testng.TestNGCucumberRunner;
 
 
 
-@SuppressWarnings("deprecation")
 @CucumberOptions(
         features = "src/test/resources/feature",
         glue = {"prjframework.sunaynatalreja.framework.testscript"},

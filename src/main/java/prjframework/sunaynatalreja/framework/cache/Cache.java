@@ -5,12 +5,6 @@ package prjframework.sunaynatalreja.framework.cache;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.graph.Graph;
 
 /**
  * @author Sunayna Talreja

@@ -15,6 +15,7 @@ import prjframework.sunaynatalreja.apirequests.APIRequests;
 import prjframework.sunaynatalreja.apiresponse.registersuccessfulresponse.RegisterSuccessfulResponse;
 import prjframework.sunaynatalreja.dataprovider.DataProviderClass;
 import prjframework.sunaynatalreja.framework.cache.Cache;
+import prjframework.sunaynatalreja.framework.listeners.ExtentReportListener;
 import prj.sunaynatalreja.logutil.Log;
 
 
@@ -23,8 +24,10 @@ import prj.sunaynatalreja.logutil.Log;
  * Test class for register successful api test cases
  */
 
+@Listeners(ExtentReportListener.class)
 public class RegisterSuccessful {
 
+	@SuppressWarnings("static-access")
 	@BeforeClass
 	public void init()
 	{
@@ -36,23 +39,23 @@ public class RegisterSuccessful {
 	@Test(dataProvider = "getDataRegisterSuccess" , dataProviderClass = DataProviderClass.class)
 	public void registerSuccessTest(Map<String,String> data,ITestContext context)
 	{
-		Log.messageInfo("Running Test register success");
-		Log.messageInfo("TestData : "+data.toString());
+		Log.setMessageInfo("Running Test register success");
+		Log.setMessageInfo("TestData : "+data.toString());
 		SoftAssert softAssert = new SoftAssert(); 
 		context.setAttribute("Data", data.toString());
 		try {
-			RegisterSuccessfulResponse response=APIRequests.getRegisterSuccessfulResponse(data);
-			softAssert.assertTrue(response.token.length()!=0);
-			softAssert.assertTrue(response.id.length()!=0);
+			RegisterSuccessfulResponse response=APIRequests.getInstance().getRegisterSuccessfulResponse(data);
+			softAssert.assertTrue(response.getToken().length()!=0);
+			softAssert.assertTrue(response.getId().length()!=0);
 
 		} catch (Exception e) {
 			softAssert.fail();
 			context.setAttribute("Data", "Error: "+e.getStackTrace().toString());
-			Log.messageError(e.getStackTrace().toString());
+			Log.setMessageError(e.getStackTrace().toString());
 			e.printStackTrace();
 		}
 		softAssert.assertAll();
-		Log.messageInfo("Register Success Post Completed"); 
+		Log.setMessageInfo("Register Success Post Completed"); 
 	}
 
 

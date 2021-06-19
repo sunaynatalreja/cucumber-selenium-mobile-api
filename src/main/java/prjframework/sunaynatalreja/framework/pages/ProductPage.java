@@ -14,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
+import prj.sunaynatalreja.logutil.Log;
 import prj.sunaynatalreja.readdatautil.ReadProperty;
 import prj.sunaynatalreja.webdriverutil.browserutil.BrowserElementActions;
 import prjframework.sunaynatalreja.framework.cache.Cache;
@@ -51,7 +52,7 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 	private WebElement password;
 	
 	@FindBy(id = "SubmitLogin")
-	private WebElement SubmitLogin;
+	private WebElement submitLogin;
 	
 	@FindBy(id = "uniform-cgv")
 	private WebElement terms;
@@ -85,9 +86,9 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 			Assert.fail();
 		}
 		if (isPageLoaded && !(BrowserElementActions.getInstance().waitForElement(driver, womenCategories))) {
-			System.out.println("Home Page did not open up. Site might be down.");
+			Log.setMessageInfo("Home Page did not open up. Site might be down.");
 		}
-		System.out.println("The current URL is: " + driver.getCurrentUrl());
+		Log.setMessageInfo("The current URL is: " + driver.getCurrentUrl());
 	}
 
 
@@ -113,13 +114,14 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 		BrowserElementActions.getInstance().clickOnElement(driver, womenCategories, "Women Category Navigation");
 	}
 
-	public static int randomNumber()
+	private static int randomNumber()
 	{
 		Random rnd=new Random();
 		return rnd.nextInt(9);
 
 	}
 
+	@SuppressWarnings("unused")
 	public void clickRequiredProduct(String price) throws Exception
 	{
 		Boolean found=false;
@@ -151,12 +153,13 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 		BrowserElementActions.getInstance().clickOnElement(driver, proceedToCheckoutPage, "Proceed To Checkout Button");
 	}
 	
+	@SuppressWarnings("static-access")
 	public void signIn() throws Exception
 	{
 		String propertyfile=Cache.getInstance().getVal("propertyfile");
 		BrowserElementActions.getInstance().typeOnElement(driver, email, ReadProperty.getInstance().getProperty("email",propertyfile), "Email");
 		BrowserElementActions.getInstance().typeOnElement(driver, password, ReadProperty.getInstance().getProperty("password",propertyfile), "Password");
-		BrowserElementActions.getInstance().clickOnElement(driver, SubmitLogin, "Proceed To Checkout Button");
+		BrowserElementActions.getInstance().clickOnElement(driver, submitLogin, "Proceed To Checkout Button");
 	}
 
 	/**

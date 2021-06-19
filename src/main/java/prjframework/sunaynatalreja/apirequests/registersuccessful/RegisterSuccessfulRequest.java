@@ -8,8 +8,8 @@ package prjframework.sunaynatalreja.apirequests.registersuccessful;
  * @author Sunayna Talreja
 */
 public class RegisterSuccessfulRequest {
-	public String email;
-	public String password;
+	private String email;
+	private String password;
 	
 	
 	public String getEmail() {

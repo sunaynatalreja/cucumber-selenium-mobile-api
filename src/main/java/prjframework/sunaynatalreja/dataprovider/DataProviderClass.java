@@ -114,6 +114,7 @@ public class DataProviderClass {
 	 * in the form of 2D object array
 	 * 
 	 */
+	@SuppressWarnings("static-access")
 	public static Object[][] readFromExcel(String workbookName,String sheetName) throws IOException
 	{
 		

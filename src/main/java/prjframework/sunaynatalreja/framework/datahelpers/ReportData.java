@@ -8,9 +8,9 @@ package prjframework.sunaynatalreja.framework.datahelpers;
  * Class to record test case run data
 */
 public class ReportData {
-	public String testName;
-	public String status;
-	public String testData;
+	private String testName;
+	private String status;
+	private String testData;
 	
 	public String getTestData() {
 		return testData;

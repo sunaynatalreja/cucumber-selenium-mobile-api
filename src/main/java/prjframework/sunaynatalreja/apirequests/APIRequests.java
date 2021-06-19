@@ -28,6 +28,20 @@ import prjframework.sunaynatalreja.constants.APIURL;
  * @author Sunayna Talreja
 */
 public class APIRequests {
+	
+	private static APIRequests api_requests_instance;
+	  
+    
+    public static APIRequests getInstance()
+    {
+        if (api_requests_instance == null)
+        {
+        	api_requests_instance = new APIRequests();
+        }
+        return api_requests_instance;
+    }
+	
+	
 	/**
 	 * register successful API request hit
 	 * @param data
@@ -35,14 +49,14 @@ public class APIRequests {
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public static RegisterSuccessfulResponse getRegisterSuccessfulResponse(Map<String,String> data) throws JsonMappingException, JsonProcessingException
+	public RegisterSuccessfulResponse getRegisterSuccessfulResponse(Map<String,String> data) throws  JsonProcessingException
 	{		
 		String url=APIURL.getRegisterSuccessful();
 		RegisterSuccessfulRequest request=new RegisterSuccessfulRequest();
 		request.setEmail(data.get("Email"));
 		request.setPassword(data.get("Password"));
 		ObjectMapper mapper=new ObjectMapper();		
-		String response=JSONUtil.getInstance().jsonPost(mapper.writeValueAsString(request),url);
+		String response=JSONUtil.getInstance().executeJsonPost(mapper.writeValueAsString(request),url);
 		return mapper.readValue(response, RegisterSuccessfulResponse.class);
 		
 	}
@@ -54,14 +68,14 @@ public class APIRequests {
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public static CreateResponse getCreateResponse(Map<String,String> data) throws JsonMappingException, JsonProcessingException
+	public CreateResponse getCreateResponse(Map<String,String> data) throws  JsonProcessingException
 	{
 		String url=APIURL.getCreatePost();
 		CreateRequest request=new CreateRequest();
 		request.setName(data.get("Name"));
 		request.setJob(data.get("Job"));
 		ObjectMapper mapper=new ObjectMapper();		
-		String response=JSONUtil.getInstance().jsonPost(mapper.writeValueAsString(request),url);
+		String response=JSONUtil.getInstance().executeJsonPost(mapper.writeValueAsString(request),url);
 		return mapper.readValue(response, CreateResponse.class);
 		
 	}
@@ -73,10 +87,10 @@ public class APIRequests {
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public static SingleUser getSingleUserResponse(Map<String, String> data) throws JsonMappingException, JsonProcessingException {
+	public SingleUser getSingleUserResponse(Map<String, String> data) throws  JsonProcessingException {
 		String url=APIURL.getSingleUserGet();
 		ObjectMapper mapper=new ObjectMapper();		
-		String response=JSONUtil.getInstance().jsonGetPathParameter(url,data);
+		String response=JSONUtil.getInstance().executeJsonGetPathParameter(url,data);
 		return mapper.readValue(response, SingleUser.class);
 	}	
 	/**
@@ -85,20 +99,20 @@ public class APIRequests {
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public static List<ListUsers> getListUsersResponse() throws JsonMappingException, JsonProcessingException {
+	public List<ListUsers> getListUsersResponse() throws  JsonProcessingException {
 		
 		String url=APIURL.getListUsersGet();
 		List<ListUsers> listUsers=new ArrayList<>();
 		ObjectMapper mapper=new ObjectMapper();	
 		Map<String,String> map=new HashedMap<>();
 		map.put("page", "1");
-		Response response=JSONUtil.getInstance().jsonGetQueryParams(map,url);
+		Response response=JSONUtil.getInstance().executeJsonGetQueryParams(map,url);
 		listUsers.add(mapper.readValue(response.body().asString(), ListUsers.class));
 		int totalPages=Integer.parseInt(listUsers.get(0).getTotal_pages());
 		for(int i=2;i<=totalPages;i++)
 		{
 			map.put("page",String.valueOf(i));
-			Response response2=JSONUtil.getInstance().jsonGetQueryParams(map,url);
+			Response response2=JSONUtil.getInstance().executeJsonGetQueryParams(map,url);
 			listUsers.add(mapper.readValue(response2.body().asString(), ListUsers.class));
 		}
 		return listUsers;
@@ -111,32 +125,29 @@ public class APIRequests {
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public static UpdateUser getUpdateResponse(Map<String, String> data) throws JsonMappingException, JsonProcessingException {
+	public UpdateUser getUpdateResponse(Map<String, String> data) throws  JsonProcessingException {
 		String url=APIURL.getCreatePost();
 		CreateRequest request=new CreateRequest();
 		request.setName(data.get("Name"));
 		request.setJob(data.get("Job"));
 		ObjectMapper mapper=new ObjectMapper();		
-		String response=JSONUtil.getInstance().jsonPut(mapper.writeValueAsString(request),url);
+		String response=JSONUtil.getInstance().executeJsonPut(mapper.writeValueAsString(request),url);
 		return mapper.readValue(response, UpdateUser.class);
 	}
 
-	/*
-	 * delete user API request hit
-	 * 
-	 */
 	/**
 	 * delete user API request hit
 	 * @param data
-	 * @return
+	 * @return Response restassured response
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public static Response getDeleteResponse(Map<String, String> data) throws JsonMappingException, JsonProcessingException {
+	@SuppressWarnings("unused")
+	public Response getDeleteResponse(Map<String, String> data) throws  JsonProcessingException {
 		
 		String url=APIURL.getDelete();
 		ObjectMapper mapper=new ObjectMapper();		
-		Response response=JSONUtil.getInstance().jsonDeleteWithPathParams(data,url);
+		Response response=JSONUtil.getInstance().executeJsonDeleteWithPathParams(data,url);
 		return response;
 	}
 }
