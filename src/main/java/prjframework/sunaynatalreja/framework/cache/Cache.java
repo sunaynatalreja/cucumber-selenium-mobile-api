@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.framework.cache;
 
 import java.util.Map;

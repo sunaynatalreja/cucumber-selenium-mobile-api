@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.apiresponse.create;
 
 import java.util.HashMap;
@@ -30,7 +27,7 @@ public class CreateResponse {
 	private String createdAt;
 	
 	@JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 	
 	
 	

@@ -1,8 +1,6 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.framework.pages;
 
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
@@ -29,6 +27,7 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 	private boolean isPageLoaded;
 	WebDriver driver=null;
 	String url=null;
+	SecureRandom rnd;
 
 	@FindBy(xpath = "//*[@title='Women' and @class='sf-with-ul']")
 	private WebElement womenCategories;
@@ -114,9 +113,9 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 		BrowserElementActions.getInstance().clickOnElement(driver, womenCategories, "Women Category Navigation");
 	}
 
-	private static int randomNumber()
+	private int randomNumber()
 	{
-		Random rnd=new Random();
+		rnd=new SecureRandom();
 		return rnd.nextInt(9);
 
 	}
@@ -181,7 +180,7 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 		BrowserElementActions.getInstance().waitForPageLoad(driver);		
 	}
 	
-	public String getOrderDetails() throws Exception {
+	public String getOrderDetails() {
 		return orderDetails.getText(); 
 	}
 

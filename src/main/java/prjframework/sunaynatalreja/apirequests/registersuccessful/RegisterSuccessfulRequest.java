@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.apirequests.registersuccessful;
 
 /**

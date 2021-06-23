@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.framework.listeners;
 
 import org.testng.ITestContext;

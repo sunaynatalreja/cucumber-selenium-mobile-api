@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.apiresponse.registersuccessfulresponse;
 
 import java.util.HashMap;
@@ -26,7 +23,7 @@ public class RegisterSuccessfulResponse {
 	private String token;
 	
 	@JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 	
 	@JsonProperty("id")	
 	public String getId() {

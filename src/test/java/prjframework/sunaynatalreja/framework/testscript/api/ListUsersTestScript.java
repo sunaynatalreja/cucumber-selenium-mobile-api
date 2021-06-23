@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.framework.testscript.api;
 
 import java.util.List;

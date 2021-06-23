@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.apiresponse.singleUser;
 
 import java.util.HashMap;
@@ -33,7 +30,7 @@ public class Data {
 	private String avatar;
 	
 	@JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 	
 	@JsonProperty("id")
 	public String getId() {

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.dataprovider;
 
 import java.io.IOException;
@@ -138,8 +135,7 @@ public class DataProviderClass {
 			}
 			obj[row-1][0]=testData;
 		}
-		
-		
+		readExcelData.closeExcel();
 		return obj;
 		
 	}

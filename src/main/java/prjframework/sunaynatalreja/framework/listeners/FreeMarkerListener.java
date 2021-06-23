@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.framework.listeners;
 
 import java.util.ArrayList;

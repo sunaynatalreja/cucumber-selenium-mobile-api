@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.framework.config;
 
 import java.lang.reflect.Method;

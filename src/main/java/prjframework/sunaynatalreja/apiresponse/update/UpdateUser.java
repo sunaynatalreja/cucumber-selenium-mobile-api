@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.apiresponse.update;
 
 import java.util.HashMap;
@@ -29,7 +26,7 @@ public class UpdateUser {
 
 
 	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private Map<String, Object> additionalProperties = new HashMap<>();
 
 
 

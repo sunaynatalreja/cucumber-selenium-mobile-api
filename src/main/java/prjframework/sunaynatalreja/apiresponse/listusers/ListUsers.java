@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.apiresponse.listusers;
 
 import java.util.HashMap;
@@ -39,7 +36,7 @@ public class ListUsers {
 	private Support support;
 	    
 	@JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 	
 	
 	

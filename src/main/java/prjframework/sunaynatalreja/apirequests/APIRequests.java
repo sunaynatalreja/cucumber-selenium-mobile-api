@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.apirequests;
 
 import java.util.ArrayList;
@@ -26,22 +23,22 @@ import prjframework.sunaynatalreja.constants.APIURL;
 
 /**
  * @author Sunayna Talreja
-*/
+ */
 public class APIRequests {
-	
-	private static APIRequests api_requests_instance;
-	  
-    
-    public static APIRequests getInstance()
-    {
-        if (api_requests_instance == null)
-        {
-        	api_requests_instance = new APIRequests();
-        }
-        return api_requests_instance;
-    }
-	
-	
+
+	private static APIRequests apiRequestsInstance;
+
+
+	public static APIRequests getInstance()
+	{
+		if (apiRequestsInstance == null)
+		{
+			apiRequestsInstance = new APIRequests();
+		}
+		return apiRequestsInstance;
+	}
+
+
 	/**
 	 * register successful API request hit
 	 * @param data
@@ -58,7 +55,7 @@ public class APIRequests {
 		ObjectMapper mapper=new ObjectMapper();		
 		String response=JSONUtil.getInstance().executeJsonPost(mapper.writeValueAsString(request),url);
 		return mapper.readValue(response, RegisterSuccessfulResponse.class);
-		
+
 	}
 
 	/**
@@ -77,7 +74,7 @@ public class APIRequests {
 		ObjectMapper mapper=new ObjectMapper();		
 		String response=JSONUtil.getInstance().executeJsonPost(mapper.writeValueAsString(request),url);
 		return mapper.readValue(response, CreateResponse.class);
-		
+
 	}
 
 	/**
@@ -100,7 +97,7 @@ public class APIRequests {
 	 * @throws JsonProcessingException
 	 */
 	public List<ListUsers> getListUsersResponse() throws  JsonProcessingException {
-		
+
 		String url=APIURL.getListUsersGet();
 		List<ListUsers> listUsers=new ArrayList<>();
 		ObjectMapper mapper=new ObjectMapper();	
@@ -143,11 +140,10 @@ public class APIRequests {
 	 * @throws JsonProcessingException
 	 */
 	@SuppressWarnings("unused")
-	public Response getDeleteResponse(Map<String, String> data) throws  JsonProcessingException {
-		
+	public Response getDeleteResponse(Map<String, String> data) {
+
 		String url=APIURL.getDelete();
 		ObjectMapper mapper=new ObjectMapper();		
-		Response response=JSONUtil.getInstance().executeJsonDeleteWithPathParams(data,url);
-		return response;
+		return JSONUtil.getInstance().executeJsonDeleteWithPathParams(data,url);
 	}
 }

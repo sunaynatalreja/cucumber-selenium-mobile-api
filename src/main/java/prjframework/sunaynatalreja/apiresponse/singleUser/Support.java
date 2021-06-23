@@ -1,6 +1,3 @@
-/**
- * 
- */
 package prjframework.sunaynatalreja.apiresponse.singleUser;
 
 import java.util.HashMap;
@@ -25,7 +22,7 @@ public class Support {
 	private String text;
 	
 	@JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 	
 	@JsonProperty("url")
 	public String getUrl() {
