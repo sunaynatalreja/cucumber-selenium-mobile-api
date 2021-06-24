@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Code Pull') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[credentialsId: '6d3a364d-78a9-427f-b80e-02bbf418cfbe',url: 'https://github.com/sunaynatalreja/cucumber-selenium-mobile-api.git']]])
+            
+            }
+        }
+        stage('Build Jacoco Report') {
+            steps {
+            		configFileProvider([configFile(fileId: 'c7a7109c-b001-4917-97e7-041b6167b03f', variable: 'MAVEN_SETTINGS')]){
+                    sh "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dtestng.name=${TestNGXML}"
+                    sh 'mvn jacoco:report'
+                    }
+                
+            }
+            }
+            
+            stage('Build Sonar report with Jacoco details') {
+            steps {                
+                withSonarQubeEnv('SonarJenkins'){
+                sh 'mvn sonar:sonar'
+                }
+                
+            }
+            }
+            
+        }
+    }
+    
