@@ -3,7 +3,7 @@
 <suite name="Suite" verbose="2">
 	<test name="WebTest">
 		<parameter name="browser" value="chrome" />
-		<parameter name="url" value="http://automationpractice.com/" />
+		<parameter name="url" value="http://automationpractice.pl/" />
 		<parameter name="productVal" value="27" />
 
 		<classes>
