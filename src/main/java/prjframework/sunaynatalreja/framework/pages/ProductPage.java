@@ -2,7 +2,6 @@ package prjframework.sunaynatalreja.framework.pages;
 
 import java.security.SecureRandom;
 import java.util.List;
-import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -133,7 +132,6 @@ public class ProductPage extends LoadableComponent<ProductPage> {
 			if(wb.getText().contains(price))
 			{
 				BrowserElementActions.getInstance().mouseHoverAction(wb, driver, "Moved to required Product");
-				//WebElement addToCartElement=products.get(count).
 				WebElement addToCart=products.get(count).findElement(By.xpath(".//following-sibling::div/a"));
 				BrowserElementActions.getInstance().clickOnElement(driver, addToCart, "Add to Cart clicked");
 				found=true;

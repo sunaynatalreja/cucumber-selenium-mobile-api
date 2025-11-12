@@ -1,0 +1,15 @@
+[node]
+max-sessions = 5
+detect-drivers = false
+
+[[node.driver-configuration]]
+display-name = "Chrome Node"
+max-sessions = 3
+stereotype = {"browserName": "chrome", "browserVersion": "latest"}
+webdriver-executable = "C:\\Drivers\\chromedriver.exe"
+
+[[node.driver-configuration]]
+display-name = "Firefox Node"
+max-sessions = 2
+stereotype = {"browserName": "firefox", "browserVersion": "latest"}
+webdriver-executable = "C:\\Drivers\\geckodriver.exe"

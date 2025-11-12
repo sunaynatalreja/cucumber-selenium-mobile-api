@@ -1,7 +1,7 @@
 
 package prjframework.sunaynatalreja.framework.testscripts.mobile;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
@@ -40,7 +40,7 @@ public class MobileTestAutomation {
 		driver=webDriverFactory.getDriver(context.getCurrentXmlTest().getParameter("browser"),"http://127.0.0.1:4723/wd/hub","SunaynaPixel4",currentDirectory+ "\\GridSetup\\ApiDemos-debug.apk");
 		mobileAutomationScript=new MobileAutomationScript(driver);
 
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 		mobileAutomationScript.clickPreferences();
 		mobileAutomationScript.clickPreferenceDependency();

@@ -5,7 +5,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import prj.sunaynatalreja.webdriverutil.browserutil.BrowserElementActions;
@@ -21,55 +21,55 @@ public class MobileAutomationScript {
 	WebDriver driver=null;
 
 	@AndroidFindBy(uiAutomator   = "text(\"Preference\")")
-	private AndroidElement preferences;
+	private WebElement preferences;
 
 	@AndroidFindBy(xpath  = "//android.widget.TextView[@text='3. Preference dependencies']")
-	private AndroidElement preferenceDependency;
+	private WebElement preferenceDependency;
 
 	@AndroidFindBy(className  = "android.widget.CheckBox")
-	private AndroidElement wifiCheckBox;
+	private WebElement wifiCheckBox;
 
 
 	@AndroidFindBy(className  = "android.widget.EditText")
-	private AndroidElement wifiTextBox;
+	private WebElement wifiTextBox;
 
 	@AndroidFindBy(xpath  = "//android.widget.TextView[@text='WiFi settings']")
-	private AndroidElement wifiSettings;
+	private WebElement wifiSettings;
 
 	@AndroidFindBy(id="android:id/button1")
-	private AndroidElement wifiOkButton;
+	private WebElement wifiOkButton;
 
 	@AndroidFindBy(uiAutomator ="clickable(\"true\")")
-	private List<AndroidElement> clickableCheck;
+	private List<WebElement> clickableCheck;
 
 	@AndroidFindBy(uiAutomator ="text(\"Views\")")
-	private AndroidElement views;
+	private WebElement views;
 
 	@AndroidFindBy(uiAutomator ="text(\"Expandable Lists\")")
-	private AndroidElement expandableList;
+	private WebElement expandableList;
 
 	@AndroidFindBy(uiAutomator ="text(\"1. Custom Adapter\")")
-	private AndroidElement customAdaptor;
+	private WebElement customAdaptor;
 
 	@AndroidFindBy(uiAutomator ="text(\"People Names\")")
-	private AndroidElement peopleNames;
+	private WebElement peopleNames;
 
 	@AndroidFindBy(uiAutomator ="text(\"Date Widgets\")")
-	private AndroidElement dateWidgets;
+	private WebElement dateWidgets;
 
 	@AndroidFindBy(uiAutomator ="text(\"2. Inline\")")
-	private AndroidElement inline;
+	private WebElement inline;
 
 	@AndroidFindBy(xpath  = "//*[@content-desc='9']")
-	private AndroidElement inlineDate;
+	private WebElement inlineDate;
 
 	@AndroidFindBy(xpath  = "//*[@content-desc='15']")
-	private AndroidElement startTime;
+	private WebElement startTime;
 	@AndroidFindBy(xpath  = "//*[@content-desc='45']")
-	private AndroidElement endTime;
+	private WebElement endTime;
 
 	@AndroidFindBy(uiAutomator ="new UiScrollable(new UiSelector()).scrollIntoView(text(\"Lists\"));")
-	private AndroidElement lists;
+	private WebElement lists;
 
 	public MobileAutomationScript(WebDriver driver)
 	{

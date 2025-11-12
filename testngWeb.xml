@@ -4,7 +4,7 @@
 	<test name="WebTest">
 		<parameter name="browser" value="chrome" />
 		<parameter name="url" value="http://automationpractice.pl/" />
-		<parameter name="productVal" value="27" />
+		<parameter name="productVal" value="30.50" />
 
 		<classes>
 			<class name="prjframework.sunaynatalreja.framework.testscript.webui.MyStoreAutomation" />

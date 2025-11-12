@@ -13,7 +13,7 @@ import prjframework.sunaynatalreja.dataprovider.DataProviderClass;
 import prjframework.sunaynatalreja.framework.cache.Cache;
 import prjframework.sunaynatalreja.framework.listeners.ExtentReportListener;
 import prj.sunaynatalreja.logutil.Log;
-import com.jayway.restassured.response.Response;
+import io.restassured.response.Response;
 
 /**
  * @author Sunayna Talreja

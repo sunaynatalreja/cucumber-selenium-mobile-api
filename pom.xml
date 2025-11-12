@@ -11,24 +11,30 @@
 
 	<name>cucumber-selenium-mobile-api</name>
 	<url>http://www.example.com</url>
-
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/sunaynatalreja/frameworkutil</url>
+		</repository>
+	</repositories>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<poi-ooxml.version>4.1.2</poi-ooxml.version>
-		<testng.version>7.3.0</testng.version>
-		<selenium-java.version>3.141.59</selenium-java.version>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+		<poi-ooxml.version>5.2.5</poi-ooxml.version>
+		<testng.version>7.11.0</testng.version>
+		<selenium-java.version>4.38.0</selenium-java.version>
 		<cucumber-java.version>1.2.6</cucumber-java.version>
 		<cucumber-jvm-deps.version>1.0.5</cucumber-jvm-deps.version>
 		<frameworkutil.version>0.0.2-SNAPSHOT</frameworkutil.version>
-		<cucumber-testng.version>1.2.5</cucumber-testng.version>
+		<cucumber-testng.version>7.31.0</cucumber-testng.version>
 		<jackson-databind.version>2.12.0</jackson-databind.version>
-		<jacoco.version>0.8.7</jacoco.version>
+		<jacoco.version>0.8.14</jacoco.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.language>java</sonar.language>
+		<testng.name>testngWeb.xml</testng.name>
 	</properties>
 
 	<dependencies>
@@ -48,20 +54,25 @@
 			<version>${selenium-java.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>${cucumber-java.version}</version>
+			<version>7.31.0</version>
 		</dependency>
 		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-jvm-deps</artifactId>
-			<version>${cucumber-jvm-deps.version}</version>
+			<version>1.0.6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
-			<version>${cucumber-testng.version}</version>
+			<version>7.31.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-jvm-deps</artifactId>
+			<version>1.0.6</version>
 			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
@@ -73,17 +84,17 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${jackson-databind.version}</version>
+			<version>2.20.1</version>
 		</dependency>
 		<dependency>
 			<groupId>prj.sunaynatalreja.frameworkutil</groupId>
 			<artifactId>frameworkutil</artifactId>
-			<version>${frameworkutil.version}</version>
+			<version>0.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>
-			<version>0.8.7</version>
+			<version>0.8.14</version>
 		</dependency>
 	</dependencies>
 
@@ -92,11 +103,11 @@
 			<plugins>
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>3.5.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.2</version>
+					<version>3.3.1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -104,28 +115,28 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.0.2</version>
+					<version>3.4.2</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
+					<version>3.1.1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
+					<version>4.0.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.7.1</version>
+					<version>4.0.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>3.9.0</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.19.1</version>
+					<version>3.5.4</version>
 					<configuration>
 						<!-- Suite testng xml file to consider for test execution -->
 						<suiteXmlFiles>
@@ -164,7 +175,7 @@
 				<plugin>
 					<groupId>org.sonarsource.scanner.maven</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
-					<version>3.6.0.1398</version>
+					<version>5.3.0.6276</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
