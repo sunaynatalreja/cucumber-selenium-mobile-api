@@ -23,12 +23,6 @@ cucumber-selenium-mobile-api/
 ```
 Using my [framworkutil](https://github.com/sunaynatalreja/frameworkutil) dependency, a demo framework to show web,api, mobile automation
 
-## Prerequisites  
-- Java 11+  
-- Maven 3.8+  
-- Appium server (for mobile tests)  
-- Correct WebDriver binaries & device/emulator setup for mobile
-
 ## Build & Run  
 ```bash
 # Clone repository
@@ -40,7 +34,7 @@ cd cucumber-selenium-mobile-api
 mvn clean install
 
 # Run all tests
-mvn test
+mvn test -DsuiteXmlFile={testng.xml} -Dtestng.dtd.http=true
 
 ## Usage
 
